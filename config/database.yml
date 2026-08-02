@@ -88,8 +88,7 @@ production:
   primary: &primary_production
     <<: *default
     database: todo_production
-    username: todo
-    password: <%= ENV["TODO_DATABASE_PASSWORD"] %>
+    url: <%= Rails.application.credentials.db_url %>
   cache:
     <<: *primary_production
     database: todo_production_cache
