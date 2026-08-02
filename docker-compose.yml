@@ -1,0 +1,37 @@
+services:
+  db:
+    image: postgres:15-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: rewards_development
+      PGPORT: 5433
+    container_name: db
+    ports:
+      - "5433:5433"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+      ssh:
+        - default
+    container_name: web
+    command: bash -c "rm -f tmp/pids/server.pid && ./bin/rails server -b 0.0.0.0"
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
+    environment:
+      - RAILS_ENV=development
+      - DATABASE_URL=postgres://postgres:password@db:5433/rewards_development
+    volumes:
+      - .:/rails
+      - node_modules_data:/rails/node_modules
+
+volumes:
+  postgres_data:
+  node_modules_data:
