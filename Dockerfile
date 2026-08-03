@@ -26,6 +26,10 @@ RUN --mount=type=ssh bundle install --jobs 4
 COPY package.json yarn.lock ./
 RUN yarn install
 
+# Copy application code
+COPY . .
+
+# Precompile assets
 RUN bundle exec rails assets:precompile
 
 # Final stage
@@ -34,8 +38,6 @@ FROM base
 # Copy gems and application files
 COPY --from=build "${BUNDLE_PATH}" "${BUNDLE_PATH}"
 COPY --from=build /rails /rails
-
-RUN chmod +x ./bin/rails
 
 EXPOSE 3000
 CMD ["./bin/rails", "server", "-b", "0.0.0.0"]
