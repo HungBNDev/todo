@@ -30,7 +30,7 @@ RUN yarn install
 COPY . .
 
 # Precompile assets
-RUN SECRET_KEY_BASE_DUMMY=1 bundle exec rails assets:precompile
+RUN RAILS_ENV=production bundle exec rails assets:precompile
 
 # Final stage
 FROM base
