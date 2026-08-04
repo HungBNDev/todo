@@ -40,5 +40,5 @@ COPY --from=build "${BUNDLE_PATH}" "${BUNDLE_PATH}"
 COPY --from=build /rails /rails
 
 ENTRYPOINT ["/rails/bin/docker-entrypoint"]
-EXPOSE 3000
-CMD ["./bin/rails", "server", "-b", "0.0.0.0", "-p", "3000"]
+EXPOSE 80
+CMD ["./bin/rails", "server", "-b", "0.0.0.0", "-p", "80"]
