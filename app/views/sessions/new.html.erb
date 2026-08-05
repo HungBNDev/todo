@@ -1,11 +1,32 @@
-<%= tag.div(flash[:alert], style: "color:red") if flash[:alert] %>
-<%= tag.div(flash[:notice], style: "color:green") if flash[:notice] %>
+<div class="row flex-grow-1 justify-content-center align-items-center">
+  <div class="col-12 col-md-8 col-lg-5">
+    <div class="card shadow-sm border-0 rounded-4">
+      <div class="card-body p-5">
+        <div class="text-center mb-4">
+          <h1 class="h3 mb-3 fw-bold">Welcome Back</h1>
+          <p class="text-muted mb-0">Sign in to your account</p>
+        </div>
 
-<%= form_with url: session_path do |form| %>
-  <%= form.email_field :email_address, required: true, autofocus: true, autocomplete: "username", placeholder: "Enter your email address", value: params[:email_address] %><br>
-  <%= form.password_field :password, required: true, autocomplete: "current-password", placeholder: "Enter your password", maxlength: 72 %><br>
-  <%= form.submit "Sign in" %>
-<% end %>
-<br>
+        <%= form_with url: session_path, class: "needs-validation" do |form| %>
+          <div class="form-floating mb-3">
+            <%= form.email_field :email_address, required: true, autofocus: true, autocomplete: "username", placeholder: "name@example.com", value: params[:email_address], class: "form-control" %>
+            <%= form.label :email_address, "Email address" %>
+          </div>
 
-<%= link_to "Forgot password?", new_password_path %>
+          <div class="form-floating mb-4">
+            <%= form.password_field :password, required: true, autocomplete: "current-password", placeholder: "Password", maxlength: 72, class: "form-control" %>
+            <%= form.label :password, "Password" %>
+          </div>
+
+          <div class="d-grid">
+            <%= form.submit "Sign in", class: "btn btn-primary btn-lg rounded-3" %>
+          </div>
+        <% end %>
+
+        <div class="text-center mt-4">
+          <%= link_to "Forgot password?", new_password_path, class: "text-decoration-none fw-medium" %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
