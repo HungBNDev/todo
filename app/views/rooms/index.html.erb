@@ -1,0 +1,15 @@
+<div class="rooms-wrapper">
+  <h1 class="rooms-header">Select a Chat Room</h1>
+
+  <div class="rooms-list">
+    <%= render @rooms %>
+  </div>
+
+  <div class="create-room-box">
+    <h3 class="mb-3 create-room-heading">Create New Room</h3>
+    <%= form_with(model: @room, class: "d-flex gap-2") do |form| %>
+      <%= form.text_field :name, placeholder: "Awesome Room Name...", class: "chat-textarea", required: true %>
+      <%= form.submit "Create", class: "btn text-white create-room-btn" %>
+    <% end %>
+  </div>
+</div>

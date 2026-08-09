@@ -1,0 +1,27 @@
+<% if Current.session&.user %>
+  <%= tag.meta name: "current-user-id", content: Current.session.user.id %>
+<% end %>
+
+<%= turbo_stream_from @room %>
+
+<div class="chat-container">
+  <div class="chat-header">
+    <div class="d-flex align-items-center gap-3">
+      <%= link_to rooms_path, class: "text-decoration-none text-muted fs-4", title: "Back to Rooms" do %>
+        <i class="bi bi-arrow-left-circle-fill"></i>
+      <% end %>
+      <h1><%= @room.name %></h1>
+    </div>
+    <div class="text-muted"><i class="bi bi-people-fill me-2"></i>Active</div>
+  </div>
+
+  <div class="chat-messages">
+    <div id="messages">
+      <%= render @room.messages %>
+    </div>
+  </div>
+
+  <div class="chat-input-area">
+    <%= render "messages/form", room: @room, message: @message %>
+  </div>
+</div>

@@ -1,0 +1,8 @@
+<div class="chat-bubble" id="<%= dom_id(message) %>" data-controller="chat-message" data-chat-message-user-id-value="<%= message.user_id %>">
+  <div class="bubble-user">
+    <%= message.user&.email || 'Unknown User' %>
+  </div>
+  <div class="bubble-content">
+    <%= message.content %>
+  </div>
+</div>

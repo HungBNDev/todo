@@ -1,6 +1,6 @@
-<div class="row flex-grow-1 justify-content-center align-items-center">
+<div class="row flex-grow-1 justify-content-center align-items-center mt-5">
   <div class="col-12 col-md-8 col-lg-5">
-    <div class="card shadow-sm border-0 rounded-4">
+    <div class="card login-card border-0">
       <div class="card-body p-5">
         <div class="text-center mb-4">
           <h1 class="h3 mb-3 fw-bold">Welcome Back</h1>
@@ -9,8 +9,8 @@
 
         <%= form_with url: session_path, class: "needs-validation" do |form| %>
           <div class="form-floating mb-3">
-            <%= form.email_field :email_address, required: true, autofocus: true, autocomplete: "username", placeholder: "name@example.com", value: params[:email_address], class: "form-control" %>
-            <%= form.label :email_address, "Email address" %>
+            <%= form.email_field :email, required: true, autofocus: true, autocomplete: "username", placeholder: "name@example.com", value: params[:email], class: "form-control" %>
+            <%= form.label :email, "Email address" %>
           </div>
 
           <div class="form-floating mb-4">

@@ -1,8 +1,28 @@
-<h1>Forgot your password?</h1>
+<div class="row flex-grow-1 justify-content-center align-items-center mt-5">
+  <div class="col-12 col-md-8 col-lg-5">
+    <div class="card login-card shadow-lg border-0 rounded-4">
+      <div class="card-body p-5">
+        <div class="text-center mb-4">
+          <h1 class="h3 mb-3 fw-bold">Forgot your password?</h1>
+          <p class="text-muted mb-0">Enter your email to receive instructions</p>
+        </div>
 
-<%= tag.div(flash[:alert], style: "color:red") if flash[:alert] %>
+        <%= tag.div(flash[:alert], class: "alert alert-danger") if flash[:alert] %>
 
-<%= form_with url: passwords_path do |form| %>
-  <%= form.email_field :email_address, required: true, autofocus: true, autocomplete: "username", placeholder: "Enter your email address", value: params[:email_address] %><br>
-  <%= form.submit "Email reset instructions" %>
-<% end %>
+        <%= form_with url: passwords_path, class: "needs-validation" do |form| %>
+          <div class="form-floating mb-4">
+            <%= form.email_field :email, required: true, autofocus: true, autocomplete: "username", placeholder: "Enter your email address", value: params[:email], class: "form-control" %>
+            <%= form.label :email, "Email address" %>
+          </div>
+          <div class="d-grid">
+            <%= form.submit "Email reset instructions", class: "btn text-white passwords-reset-btn btn-lg rounded-3" %>
+          </div>
+        <% end %>
+
+        <div class="text-center mt-4">
+          <%= link_to "Back to Sign In", new_session_path, class: "text-decoration-none fw-medium" %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

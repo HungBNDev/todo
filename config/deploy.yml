@@ -7,7 +7,7 @@ image: bibochip/todo
 # Deploy to these servers.
 servers:
   web:
-    - 137.184.199.230
+    - 192.184.199.230
   # job:
   #   hosts:
   #     - 192.168.0.1
