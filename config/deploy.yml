@@ -21,8 +21,9 @@ servers:
 # Don't use this when deploying to multiple web servers (then you have to terminate SSL at your load balancer).
 #
 proxy:
-  ssl: false
-  app_port: 80
+  ssl: true
+  app_port: 443
+  host: app.example.com
 
 # Where you keep your container images.
 registry:

@@ -40,5 +40,5 @@ COPY --from=build "${BUNDLE_PATH}" "${BUNDLE_PATH}"
 COPY --from=build /rails /rails
 
 ENTRYPOINT ["/rails/bin/docker-entrypoint"]
-EXPOSE 80
-CMD ["./bin/rails", "server", "-b", "0.0.0.0", "-p", "80"]
+EXPOSE 443
+CMD ["./bin/rails", "server", "-b", "0.0.0.0", "-p", "443"]

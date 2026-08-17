@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
   resource :session
   resources :passwords, param: :token
-  resources :rooms, only: [:index, :show, :create] do
-    resources :messages, only: [:create]
+  resources :rooms, only: [ :index, :show, :create ] do
+    resources :messages, only: [ :create ]
   end
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
