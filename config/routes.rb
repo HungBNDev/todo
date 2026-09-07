@@ -15,4 +15,5 @@ Rails.application.routes.draw do
   # get "service-worker" => "rails/pwa#service_worker", as: :pwa_service_worker
 
   root "rooms#index"
+  resource :excel_processor, only: [ :new, :create ]
 end
