@@ -416,7 +416,7 @@ DEPENDENCIES
   turbo-rails
   tzinfo-data
   web-console
-  whenever (~> 1.1)
+  whenever
 
 BUNDLED WITH
   4.0.6

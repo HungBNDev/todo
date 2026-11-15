@@ -69,10 +69,10 @@ Rails.application.configure do
     address: "smtp.gmail.com",
     port: 587,
     domain: "gmail.com",
-    user_name: "bibochip11@gmail.com",
-    password: ENV.fetch("GMAIL_APP_PASSWORD", "wrgvfgffttcckutf"),
+    user_name: Rails.application.credentials.dig(:sender_email),
+    password: Rails.application.credentials.dig(:google_app_password),
     authentication: :plain,
-    enable_starttls_auto: true
+    enable_starttls: true
   }
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
